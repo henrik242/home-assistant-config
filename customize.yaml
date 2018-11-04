@@ -1,0 +1,8 @@
+group.all_switches:
+  hidden: true
+group.all_lights:
+  hidden: true
+input_boolean.fake_heater:
+  hidden: true
+media_player.forsterker_zone_2:
+  hidden: true

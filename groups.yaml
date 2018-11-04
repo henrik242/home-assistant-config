@@ -1,0 +1,28 @@
+  lights:
+    name: All lights
+    entities:
+      - switch.gang
+      - switch.hjrne
+      - switch.sofavegg
+      - switch.spisebord
+      - light.tak
+  
+  all_stuff:
+    name: All stuff
+    entities:
+      - group.lights
+      - switch.telly
+      - switch.kjkken
+      - switch.sofatak
+
+  ceiling_lights:
+    name: Ceiling lights
+    entities:
+      - switch.sofatak
+      - light.tak
+
+  living_room_heaters:
+    name: Living Room heaters
+    entities:
+      - switch.panelovn_stue
+      - switch.panelovn_stuevindu

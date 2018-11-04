@@ -1,0 +1,164 @@
+homeassistant:
+  # Name of the location where Home Assistant is running
+  name: Home
+  # Location required to calculate the time the sun rises and sets
+  latitude: !secret latitude
+  longitude: !secret longitude
+  # Impacts weather/sunrise data (altitude above sea level in meters)
+  elevation: 0
+  # metric for Metric, imperial for Imperial
+  unit_system: metric
+  # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+  time_zone: Europe/Oslo
+  # Customization file
+  customize: !include customize.yaml
+
+# Show links to resources in log and frontend
+introduction:
+
+# Enables the frontend
+frontend:
+
+# Enables configuration UI
+config:
+
+http:
+  server_port: !secret http_server_port
+  # Secrets are defined in the file secrets.yaml
+  api_password: !secret http_password
+  # Uncomment this if you are using SSL/TLS, running in Docker container, etc.
+  base_url: !secret base_url
+  ssl_certificate: !secret ssl_certificate
+  ssl_key: !secret ssl_key
+  ip_ban_enabled: true
+  login_attempts_threshold: 10
+  trusted_networks:
+    - 127.0.0.1
+    - 192.168.86.0/24
+  ssl_profile: intermediate
+
+# Checks for available updates
+# Note: This component will send some information about your system to
+# the developers to assist with development of Home Assistant.
+# For more information, please see:
+# https://home-assistant.io/blog/2016/10/25/explaining-the-updater/
+updater:
+  # Optional, allows Home Assistant developers to focus on popular components.
+  # include_used_components: true
+
+# Discover some devices automatically
+discovery:
+#  ignore:
+#    - yamaha
+
+logger:
+  default: info
+  logs:
+    homeassistant.components.device_tracker.nmap_tracker: warn
+
+device_tracker:
+  #- platform: bluetooth_tracker
+  - platform: nmap_tracker
+    hosts: 192.168.86.0/24
+    home_interval: 1
+
+# Allows you to issue voice commands from the frontend in enabled browsers
+conversation:
+
+# Enables support for tracking state changes over time
+history:
+
+# View all events in a logbook
+logbook:
+
+# Enables a map showing the location of tracked devices
+map:
+
+# Track the sun
+sun:
+
+# Weather prediction
+
+# Text to speech
+tts:
+  - platform: google
+
+# Cloud
+cloud:
+
+tellduslive:
+  host: 192.168.86.11
+
+media_player:
+  - platform: yamaha
+    host: 192.168.86.24
+    zone_ignore:
+      - "Zone_2"
+
+  - platform: spotify
+    client_id: !secret spotify_client_id
+    client_secret: !secret spotify_client_secret
+
+  - platform: samsungtv
+    host: 192.168.86.21
+
+input_boolean:
+  fake_heater:
+    name: Fake heater
+    initial: off
+
+climate:
+  - platform: generic_thermostat
+    name: Indoor thermostat
+    heater: group.living_room_heaters
+    target_sensor: sensor.stua_temperature
+    target_temp: 21.5
+    away_temp: 15
+    cold_tolerance: 0.3
+    hot_tolerance: 0.1
+    initial_operation_mode: auto
+
+  - platform: generic_thermostat
+    name: Outdoor thermostat
+    heater: input_boolean.fake_heater
+    target_sensor: sensor.ute_temperature
+    initial_operation_mode: "off"
+    target_temp: -50
+
+  - platform: generic_thermostat
+    name: Bedroom thermostat
+    heater: input_boolean.fake_heater
+    target_sensor: sensor.soverom_temperature
+    initial_operation_mode: "off"
+    target_temp: -50
+
+sensor:
+  - platform: yr
+
+# https://www.home-assistant.io/components/switch.template/
+switch:
+  - platform: template
+    switches:
+      tv_all:
+        friendly_name: TV and volume
+        value_template: "{{ is_state('switch.telly', 'on') }}"
+        turn_on:
+          service: script.tv_on
+        turn_off:
+          service: script.tv_off
+
+      heaters:
+        friendly_name: Heaters
+        value_template: "{{ states.climate.indoor_thermostat.attributes.temperature > 19 }}"
+        turn_on:
+          service: script.heaters_high
+        turn_off:
+          service: script.heaters_low
+
+recorder:
+  purge_keep_days: 10
+
+google_assistant: !include google.yaml
+group: !include groups.yaml
+automation: !include automations.yaml
+script: !include scripts.yaml

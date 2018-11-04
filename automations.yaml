@@ -1,0 +1,96 @@
+  - alias: IFTTT Event
+    trigger:
+      platform: event
+      event_type: ifttt_webhook_received
+      event_data:
+        action: call_service
+    action:
+      service_template: '{{ trigger.event.data.service }}'
+      data_template:
+        entity_id: '{{ trigger.event.data.entity_id }}'
+
+  - alias: Wake up
+    trigger:
+      platform: time
+      at: '05:30:00'
+    condition:
+      condition: time
+      weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+    action:
+      - service: script.heaters_high
+
+  - alias: Go to work
+    trigger:
+      platform: time
+      at: '08:20:00'
+    condition:
+      condition: time
+      weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+    action:
+      - service: script.heaters_low
+
+  - alias: Back home
+    trigger:
+      platform: time
+      at: '16:15:00'
+    condition:
+      condition: time
+      weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+    action:
+      - service: script.heaters_high
+
+  - alias: Good night
+    trigger:
+      platform: time
+      at: '23:30:00'
+    condition:
+      condition: time
+      weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+    action:
+      - service: script.heaters_low
+
+  - alias: Weekend morning
+    trigger:
+      platform: time
+      at: '07:00:00'
+    condition:
+      condition: time
+      weekday:
+        - sat
+        - sun
+    action:
+      - service: script.heaters_high
+
+  - alias: Weekend evening
+    trigger:
+      platform: time
+      at: '23:30:00'
+    condition:
+      condition: time
+      weekday:
+        - sat
+        - sun
+    action:
+      - service: script.heaters_low
+
+

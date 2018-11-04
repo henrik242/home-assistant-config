@@ -1,0 +1,167 @@
+
+# https://console.actions.google.com/u/1/project/
+  project_id: !secret google_project_id
+  api_key: !secret google_api_key
+  entity_config:
+    climate.bedroom_thermostat:
+      name: Bedroom thermostat
+      room: Bedroom
+      aliases:
+        - Bedroom thermostat
+        - Bedroom temperature
+        - Soveromstemperatur
+        - Bedroom
+    climate.indoor_thermostat:
+      name: Indoor thermostat
+      room: Living room
+      aliases:
+        - Living room thermostat
+        - Living room temperature
+        - Indoor temperature
+        - Stuetemperatur
+        - Indoor
+        - Living room
+    climate.outdoor_thermostat:
+      name: Outdoor thermostat
+      room: Outside
+      aliases:
+        - Outside thermostat
+        - Outside temperature
+        - Outdoor temperature
+        - Utetemperatur
+        - Outdoor
+        - Outside
+    media_player.castro:
+      expose: false
+      name: Castro
+      room: Living Room
+      aliases:
+        - Living Room Chromecast
+        - Chromecast
+    media_player.garage:
+      expose: false
+    media_player.mini:
+      expose: false
+    media_player.yamaha_receiver:
+      expose: false
+      name: Yamaha receiver
+      room: Living Room
+      aliases:
+        - Yamaha receiver
+        - forsterker
+        - receiver
+    media_player.forsterker_zone_2:
+      expose: false
+    media_player.samsungtv:
+      expose: false
+    switch.tv_all:
+      name: Samsung TV
+      room: Living Room
+      aliases:
+        - Samsung TV
+        - Telly
+        - Television
+        - TV
+    switch.telly:
+      expose: false
+    switch.kjkken:
+      name: Kitchen Table Light
+      room: Kitchen
+      aliases:
+        - Kitchen table light
+        - kjøkkenlys
+        - kitchen light
+    switch.sofavegg:
+      name: Sofa Corner light
+      room: Living Room
+      aliases:
+        - Sofa corner light
+        - Sofa wall light
+        - sofavegglys
+        - lys på sofavegg
+    switch.spisebord:
+      name: Dining table corner light
+      room: Living Room
+      aliases:
+        - Dining table corner light
+        - Dining table wall light
+        - Spisebord-hjørne
+    switch.hjrne:
+      name: TV Corner Light
+      room: Living Room
+      aliases:
+        - TV corner light
+        - Corner light
+        - TV wall light
+        - Hjørnelys
+        - TV-hjørne-lys
+    switch.gang:
+      name: Hall
+      room: Hall
+      aliases:
+        - Hall light
+        - Ganglys
+    switch.sofatak:
+      name: Sofa Ceiling light
+      aliases:
+        - Sofa ceiling light
+        - Sofataklys
+    switch.panelovn_stue:
+      expose: false
+    switch.panelovn_stuevindu:
+      expose: false
+    switch.varmtvannsbereder:
+      room: Kitchen
+      expose: false
+    switch.vaskemaskin:
+      room: Bathroom
+      expose: false
+    switch.katteluke:
+      room: Living Room
+      expose: false
+    sensor.stua_temperature:
+      name: Living Room temperature
+      room: Living Room
+      aliases:
+        - Living Room temperature
+        - Stue-temperatur
+        - Living Room thermostat
+        - Inne-temperatur
+        - Temperatur inne
+    sensor.ute_temperature:
+      name: Outside temperature
+      room: Outside
+      aliases:
+        - Outside temperature
+        - Ute-temperatur
+        - Temperatur ute
+    sensor.soverom_humidity:
+      name: Bedroom temperature
+      room: Bedroom
+      aliases:
+        - Bedroom temperature
+        - Soveromstemperatur
+        - Temperatur soverom
+    light.alle:
+      expose: false
+    light.nestenalle:
+      expose: false
+    light.tak:
+      name: Dining table ceiling light
+      room: Living Room
+      aliases:
+        - Dining table ceiling light
+        - Tak-lys
+    group.living_room_heaters:
+      expose: false
+    group.all_switches:
+      expose: false
+    group.all_lights:
+      expose: false
+    group.all_devices:
+      expose: false
+    group.all_scripts:
+      expose: false
+    group.all_automations:
+      expose: false
+ 

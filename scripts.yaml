@@ -1,0 +1,81 @@
+heaters_high:
+  sequence:
+    - service: climate.set_temperature
+      entity_id: climate.indoor_thermostat
+      data:
+        temperature: 21.5
+
+heaters_low:
+  sequence:
+    - service: climate.set_temperature
+      entity_id: climate.indoor_thermostat
+      data:
+        temperature: 15
+
+morning:
+  sequence:
+    - service: script.default_volume
+    - service: switch.turn_on
+      entity_id: group.lights
+    - service: script.heaters_high
+
+tv_on:
+  sequence:
+    - service: switch.turn_on
+      entity_id: switch.telly
+    - service: script.default_volume
+    - delay:
+        seconds: 20
+    - service: media_player.select_source
+      entity_id: media_player.yamaha_receiver
+      data:
+        source: HDMI1
+    - delay:
+        seconds: 5
+    - service: media_player.select_source
+      entity_id: media_player.yamaha_receiver
+      data:
+        source: HDMI1
+    - delay:
+        seconds: 5
+    - service: media_player.select_source
+      entity_id: media_player.yamaha_receiver
+      data:
+        source: HDMI1
+    - delay:
+        seconds: 5
+    - service: media_player.select_source
+      entity_id: media_player.yamaha_receiver
+      data:
+        source: HDMI1
+    - delay:
+        seconds: 5
+    - service: media_player.select_source
+      entity_id: media_player.yamaha_receiver
+      data:
+        source: HDMI1
+
+tv_off:
+  sequence:
+    - service: switch.turn_off
+      entity_id: switch.telly
+
+default_volume:
+  sequence:
+    - service: media_player.volume_set
+      entity_id: media_player.yamaha_receiver
+      data:
+        volume_level: 0.75 # -25db
+    - service: media_player.volume_set
+      entity_id: media_player.castro
+      data:
+        volume_level: 0.5
+    - service: media_player.volume_set
+      entity_id: media_player.mini
+      data:
+        volume_level: 0.35
+    - service: media_player.volume_set
+      entity_id: media_player.garage
+      data:
+        volume_level: 0.3
+     
