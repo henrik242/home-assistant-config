@@ -78,4 +78,9 @@ default_volume:
       entity_id: media_player.garage
       data:
         volume_level: 0.3
-     
+
+noop:
+  alias: "noop"
+  sequence:
+    delay: '00:00:00'
+ 
