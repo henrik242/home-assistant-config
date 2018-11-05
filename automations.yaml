@@ -22,7 +22,7 @@
       data_template:
         entity_id: '{{ trigger.event.data.entity_id }}'
 
-  - alias: Weekday on
+  - alias: Workday heaters on
     trigger:
       - platform: time
         at: '05:30:00'
@@ -35,7 +35,7 @@
     action:
       - service: script.heaters_high
 
-  - alias: Weekday off
+  - alias: Workday heaters off
     trigger:
       - platform: time
         at: '08:20:00'
@@ -48,7 +48,7 @@
     action:
       - service: script.heaters_low
 
-  - alias: Weekend on
+  - alias: Weekend heaters on
     trigger:
       platform: time
       at: '07:00:00'
@@ -59,7 +59,7 @@
     action:
       - service: script.heaters_high
 
-  - alias: Weekend off
+  - alias: Weekend heaters off
     trigger:
       platform: time
       at: '23:30:00'
