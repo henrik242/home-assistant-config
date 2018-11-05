@@ -164,6 +164,10 @@ notify:
     api_key: !secret pushover_api_key
     user_key: !secret pushover_user_key
 
+binary_sensor:
+  - platform: workday
+    country: 'NO'
+
 google_assistant: !include google.yaml
 group: !include groups.yaml
 automation: !include automations.yaml

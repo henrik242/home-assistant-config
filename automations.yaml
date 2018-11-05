@@ -22,87 +22,51 @@
       data_template:
         entity_id: '{{ trigger.event.data.entity_id }}'
 
-  - alias: Wake up
+  - alias: Weekday on
     trigger:
-      platform: time
-      at: '05:30:00'
+      - platform: time
+        at: '05:30:00'
+      - platform: time
+        at: '16:15:00'
     condition:
-      condition: time
-      weekday:
-        - mon
-        - tue
-        - wed
-        - thu
-        - fri
+      condition: state
+      entity_id: 'binary_sensor.workday_sensor'
+      state: 'on'
     action:
       - service: script.heaters_high
 
-  - alias: Go to work
+  - alias: Weekday off
     trigger:
-      platform: time
-      at: '08:20:00'
+      - platform: time
+        at: '08:20:00'
+      - platform: time
+        at: '23:30:00'
     condition:
-      condition: time
-      weekday:
-        - mon
-        - tue
-        - wed
-        - thu
-        - fri
+      condition: state
+      entity_id: 'binary_sensor.workday_sensor'
+      state: 'on'
     action:
       - service: script.heaters_low
 
-  - alias: Back home
-    trigger:
-      platform: time
-      at: '16:15:00'
-    condition:
-      condition: time
-      weekday:
-        - mon
-        - tue
-        - wed
-        - thu
-        - fri
-    action:
-      - service: script.heaters_high
-
-  - alias: Good night
-    trigger:
-      platform: time
-      at: '23:30:00'
-    condition:
-      condition: time
-      weekday:
-        - mon
-        - tue
-        - wed
-        - thu
-        - fri
-    action:
-      - service: script.heaters_low
-
-  - alias: Weekend morning
+  - alias: Weekend on
     trigger:
       platform: time
       at: '07:00:00'
     condition:
-      condition: time
-      weekday:
-        - sat
-        - sun
+      condition: state
+      entity_id: 'binary_sensor.workday_sensor'
+      state: 'off'
     action:
       - service: script.heaters_high
 
-  - alias: Weekend evening
+  - alias: Weekend off
     trigger:
       platform: time
       at: '23:30:00'
     condition:
-      condition: time
-      weekday:
-        - sat
-        - sun
+      condition: state
+      entity_id: 'binary_sensor.workday_sensor'
+      state: 'off'
     action:
       - service: script.heaters_low
 
