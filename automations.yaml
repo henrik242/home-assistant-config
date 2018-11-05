@@ -1,3 +1,16 @@
+  - alias: Washing Machine
+    trigger:
+      platform: numeric_state
+      entity_id: sensor.vaskemaskin_power_3
+      below: 5
+      for:
+        minutes: 2
+    action:
+      service: notify.pushover
+      data:
+        title: "Washy washy"
+        message: "Vaskemaskinen er ferdig"
+
   - alias: IFTTT Event
     trigger:
       platform: event

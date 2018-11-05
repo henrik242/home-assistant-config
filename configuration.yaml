@@ -158,6 +158,12 @@ switch:
 recorder:
   purge_keep_days: 10
 
+notify:
+  - name: pushover
+    platform: pushover
+    api_key: !secret pushover_api_key
+    user_key: !secret pushover_user_key
+
 google_assistant: !include google.yaml
 group: !include groups.yaml
 automation: !include automations.yaml
