@@ -134,6 +134,10 @@ climate:
 
 sensor:
   - platform: yr
+  
+  - platform: uptime
+    name: 'HA uptime'
+    unit_of_measurement: hours
 
 # https://www.home-assistant.io/components/switch.template/
 switch:
@@ -167,6 +171,7 @@ notify:
 binary_sensor:
   - platform: workday
     country: 'NO'
+
 
 google_assistant: !include google.yaml
 group: !include groups.yaml

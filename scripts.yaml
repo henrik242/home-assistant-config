@@ -79,8 +79,4 @@ default_volume:
       data:
         volume_level: 0.3
 
-noop:
-  alias: "noop"
-  sequence:
-    delay: '00:00:00'
  

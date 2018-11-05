@@ -6,8 +6,9 @@
       for:
         minutes: 2
     condition:
-      condition: template
-      value_template: '{{ (as_timestamp(now()) - as_timestamp(states.automation.ha_started.attributes.last_triggered | default(0))) | int > 300 }}'
+      condition: numeric_state
+      entity_id: sensor.ha_uptime
+      above: 0.03
     action:
       service: notify.pushover
       data:
@@ -72,11 +73,4 @@
       state: 'off'
     action:
       - service: script.heaters_low
-
-  - alias: HA started
-    trigger:
-      platform: homeassistant
-      event: start
-    action:
-      - service: script.noop
 
