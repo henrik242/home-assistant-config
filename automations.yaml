@@ -4,7 +4,7 @@
       entity_id: sensor.vaskemaskin_power_3
       below: 5
       for:
-        minutes: 1
+        minutes: 2
     condition:
       - condition: numeric_state
         entity_id: sensor.ha_uptime
