@@ -4,16 +4,16 @@
       entity_id: sensor.vaskemaskin_power_3
       below: 5
       for:
-        minutes: 2
+        minutes: 1
     condition:
-      condition: numeric_state
-      entity_id: sensor.ha_uptime
-      above: 0.03
+      - condition: numeric_state
+        entity_id: sensor.ha_uptime
+        above: 12
     action:
-      service: notify.pushover
-      data:
-        title: "Washy washy"
-        message: "Vaskemaskinen er ferdig"
+        - service: notify.pushover
+          data:
+            title: "Washy washy"
+            message: "Vaskemaskinen er ferdig"
 
   - alias: IFTTT Event
     trigger:

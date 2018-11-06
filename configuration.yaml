@@ -137,7 +137,7 @@ sensor:
   
   - platform: uptime
     name: 'HA uptime'
-    unit_of_measurement: hours
+    unit_of_measurement: minutes
 
 # https://www.home-assistant.io/components/switch.template/
 switch:
