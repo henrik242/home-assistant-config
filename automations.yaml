@@ -10,11 +10,47 @@
         entity_id: sensor.ha_uptime
         above: 12
     action:
-        - service: notify.pushover
-          data:
-            title: "Washy washy"
-            message: "Vaskemaskinen er ferdig"
+      - service: notify.pushover
+        data:
+          title: "Washy washy"
+          message: "Vaskemaskinen er ferdig"
 
+  - alias: Living room temperature sensor has old data
+    trigger:
+      platform: numeric_state
+      entity_id: sensor.stua_temperature
+      value_template: '{{ (as_timestamp(now()) - as_timestamp(state.last_updated)) / 60 }}'
+      above: 5
+    action:
+      - service: notify.pushover
+        data:
+          title: "Sensor warning"
+          message: "Temperaturmåling i stua er {{ ((as_timestamp(now()) - as_timestamp(state.last_updated)) / 60) |int }} minutter gammel"
+
+  - alias: Bedroom temperature sensor has old data
+    trigger:
+      platform: numeric_state
+      entity_id: sensor.soverom_temperature
+      value_template: '{{ (as_timestamp(now()) - as_timestamp(state.last_updated)) / 60 }}'
+      above: 5
+    action:
+      - service: notify.pushover
+        data:
+          title: "Sensor warning"
+          message: "Temperaturmåling på soverommet er {{ ((as_timestamp(now()) - as_timestamp(state.last_updated)) / 60) |int }} minutter gammel"
+
+  - alias: Outside temperature sensor has old data
+    trigger:
+      platform: numeric_state
+      entity_id: sensor.ute_temperature
+      value_template: '{{ (as_timestamp(now()) - as_timestamp(state.last_updated)) / 60 }}'
+      above: 5
+    action:
+      - service: notify.pushover
+        data:
+          title: "Sensor warning"
+          message: "Temperaturmåling ute er {{ ((as_timestamp(now()) - as_timestamp(state.last_updated)) / 60) |int }} minutter gammel"
+ 
   - alias: IFTTT Event
     trigger:
       platform: event
@@ -34,7 +70,7 @@
         at: '16:15:00'
     condition:
       condition: state
-      entity_id: 'binary_sensor.workday_sensor'
+      entity_id: binary_sensor.workday_sensor
       state: 'on'
     action:
       - service: script.heaters_high
@@ -47,7 +83,7 @@
         at: '23:30:00'
     condition:
       condition: state
-      entity_id: 'binary_sensor.workday_sensor'
+      entity_id: binary_sensor.workday_sensor
       state: 'on'
     action:
       - service: script.heaters_low
@@ -58,7 +94,7 @@
       at: '07:00:00'
     condition:
       condition: state
-      entity_id: 'binary_sensor.workday_sensor'
+      entity_id: binary_sensor.workday_sensor
       state: 'off'
     action:
       - service: script.heaters_high
@@ -69,7 +105,7 @@
       at: '23:30:00'
     condition:
       condition: state
-      entity_id: 'binary_sensor.workday_sensor'
+      entity_id: binary_sensor.workday_sensor
       state: 'off'
     action:
       - service: script.heaters_low

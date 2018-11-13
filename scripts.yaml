@@ -16,8 +16,17 @@ morning:
   sequence:
     - service: script.default_volume
     - service: switch.turn_on
-      entity_id: group.lights
+      entity_id: group.regular_lights
     - service: script.heaters_high
+
+leaving:
+  sequence:
+    - service: homeassistant.turn_off
+      entity_id: switch.telly, group.livingroom_lights, group.kitchen_lights, switch.heaters
+    - delay: 
+        minutes: 2
+    - service: homeassistant.turn_off
+      entity_id: group.hall_lights
 
 tv_on:
   sequence:

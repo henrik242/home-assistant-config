@@ -152,7 +152,7 @@
       aliases:
         - Dining table ceiling light
         - Tak-lys
-    group.living_room_heaters:
+    group.livingroom_heaters:
       expose: false
     group.all_switches:
       expose: false

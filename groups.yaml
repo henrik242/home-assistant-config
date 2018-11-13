@@ -1,5 +1,5 @@
-  lights:
-    name: All lights
+  regular_lights:
+    name: Regular lights
     entities:
       - switch.gang
       - switch.hjrne
@@ -7,13 +7,32 @@
       - switch.spisebord
       - light.tak
   
+  livingroom_lights:
+    name: Living room lights
+    entities:
+      - switch.hjrne
+      - switch.sofavegg
+      - switch.spisebord
+      - light.tak
+      - switch.sofatak
+  
+  kitchen_lights:
+    name: Kitchen lights
+    entities:
+      - switch.kjkken
+
+  hall_lights:
+    name: Hall lights
+    entities:
+      - switch.gang
+
   all_stuff:
     name: All stuff
     entities:
-      - group.lights
+      - group.livingroom_lights
+      - group.kitchen_lights
+      - group.hall_lights
       - switch.telly
-      - switch.kjkken
-      - switch.sofatak
 
   ceiling_lights:
     name: Ceiling lights
@@ -21,7 +40,7 @@
       - switch.sofatak
       - light.tak
 
-  living_room_heaters:
+  livingroom_heaters:
     name: Living Room heaters
     entities:
       - switch.panelovn_stue
