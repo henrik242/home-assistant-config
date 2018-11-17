@@ -17,39 +17,33 @@
 
   - alias: Living room temperature sensor has old data
     trigger:
-      platform: numeric_state
-      entity_id: sensor.stua_temperature
-      value_template: '{{ (as_timestamp(now()) - as_timestamp(state.last_updated)) / 60 }}'
-      above: 5
+      platform: template
+      value_template: '{{ ((as_timestamp(now()) - as_timestamp(states.sensor.stua_temperature.last_updated)) / 60) > 5 }}'
     action:
       - service: notify.pushover
         data:
           title: "Sensor warning"
-          message: "Temperaturmåling i stua er {{ ((as_timestamp(now()) - as_timestamp(state.last_updated)) / 60) |int }} minutter gammel"
+          message: "Temperaturmåling i stua er {{ ((as_timestamp(now()) - as_timestamp(states.sensor.stua_temperature.last_updated)) / 60) |int }} minutter gammel"
 
   - alias: Bedroom temperature sensor has old data
     trigger:
-      platform: numeric_state
-      entity_id: sensor.soverom_temperature
-      value_template: '{{ (as_timestamp(now()) - as_timestamp(state.last_updated)) / 60 }}'
-      above: 5
+      platform: template
+      value_template: '{{ ((as_timestamp(now()) - as_timestamp(states.sensor.soverom_temperature.last_updated)) / 60) > 5 }}'
     action:
       - service: notify.pushover
         data:
           title: "Sensor warning"
-          message: "Temperaturmåling på soverommet er {{ ((as_timestamp(now()) - as_timestamp(state.last_updated)) / 60) |int }} minutter gammel"
+          message: "Temperaturmåling på soverommet er {{ ((as_timestamp(now()) - as_timestamp(states.sensor.soverom_temperature.last_updated)) / 60) |int }} minutter gammel"
 
   - alias: Outside temperature sensor has old data
     trigger:
-      platform: numeric_state
-      entity_id: sensor.ute_temperature
-      value_template: '{{ (as_timestamp(now()) - as_timestamp(state.last_updated)) / 60 }}'
-      above: 5
+      platform: template
+      value_template: '{{ ((as_timestamp(now()) - as_timestamp(states.sensor.ute_temperature.last_updated)) / 60) > 5 }}'
     action:
       - service: notify.pushover
         data:
           title: "Sensor warning"
-          message: "Temperaturmåling ute er {{ ((as_timestamp(now()) - as_timestamp(state.last_updated)) / 60) |int }} minutter gammel"
+          message: "Temperaturmåling ute er {{ ((as_timestamp(now()) - as_timestamp(states.sensor.ute_temperature.last_updated)) / 60) |int }} minutter gammel"
  
   - alias: IFTTT Event
     trigger:
