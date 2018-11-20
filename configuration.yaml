@@ -139,6 +139,25 @@ sensor:
     name: 'HA uptime'
     unit_of_measurement: minutes
 
+  - platform: time_date
+    display_options:
+      - 'time'
+
+  - platform: template
+    sensors:
+      stua_temperature_last:
+        entity_id: sensor.time
+        value_template: "{{ (now() - states.sensor.stua_temperature.last_updated).seconds / 60 }}"
+        unit_of_measurement: minutes
+      soverom_temperature_last:
+        entity_id: sensor.time
+        value_template: "{{ (now() - states.sensor.soverom_temperature.last_updated).seconds / 60 }}"
+        unit_of_measurement: minutes
+      ute_temperature_last:
+        entity_id: sensor.time
+        value_template: "{{ (now() - states.sensor.ute_temperature.last_updated).seconds / 60 }}"
+        unit_of_measurement: minutes
+
 # https://www.home-assistant.io/components/switch.template/
 switch:
   - platform: template
@@ -160,7 +179,7 @@ switch:
           service: script.heaters_low
 
 recorder:
-  purge_keep_days: 10
+  purge_keep_days: 2
 
 notify:
   - name: pushover
@@ -171,7 +190,6 @@ notify:
 binary_sensor:
   - platform: workday
     country: 'NO'
-
 
 google_assistant: !include google.yaml
 group: !include groups.yaml

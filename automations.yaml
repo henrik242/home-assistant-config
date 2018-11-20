@@ -1,112 +1,109 @@
-  - alias: Washing Machine
-    trigger:
-      platform: numeric_state
-      entity_id: sensor.vaskemaskin_power_3
-      below: 5
-      for:
-        minutes: 2
-    condition:
-      - condition: numeric_state
-        entity_id: sensor.ha_uptime
-        above: 12
-    action:
-      - service: notify.pushover
-        data:
-          title: "Washy washy"
-          message: "Vaskemaskinen er ferdig"
+- alias: Washing Machine
+  trigger:
+    platform: numeric_state
+    entity_id: sensor.vaskemaskin_power_3
+    below: 5
+    for:
+      minutes: 2
+  condition:
+    - condition: numeric_state
+      entity_id: sensor.ha_uptime
+      above: 12
+  action:
+    - service: notify.pushover
+      data:
+        title: "Washy washy"
+        message: "Vaskemaskinen er ferdig"
 
-  - alias: Living room temperature sensor has old data
-    trigger:
-      platform: numeric_state
-      entity_id: sensor.stua_temperature
-      value_template: '{{ (as_timestamp(now()) - as_timestamp(state.last_updated)) / 60 }}'
-      above: 5
-    action:
-      - service: notify.pushover
-        data:
-          title: "Sensor warning"
-          message: "Temperaturmåling i stua er {{ ((as_timestamp(now()) - as_timestamp(state.last_updated)) / 60) |int }} minutter gammel"
+- alias: Living room temperature sensor has old data
+  trigger:
+    platform: numeric_state
+    entity_id: sensor.stua_temperature_last
+    above: 15
+  action:
+    - service: notify.pushover
+      data:
+        title: "Sensor warning"
+        message: "Temperaturmåling i stua er {{ states.sensor.stua_temperature_last.state | int }} minutter gammel"
 
-  - alias: Bedroom temperature sensor has old data
-    trigger:
-      platform: numeric_state
-      entity_id: sensor.soverom_temperature
-      value_template: '{{ (as_timestamp(now()) - as_timestamp(state.last_updated)) / 60 }}'
-      above: 5
-    action:
-      - service: notify.pushover
-        data:
-          title: "Sensor warning"
-          message: "Temperaturmåling på soverommet er {{ ((as_timestamp(now()) - as_timestamp(state.last_updated)) / 60) |int }} minutter gammel"
+- alias: Bedroom temperature sensor has old data
+  trigger:
+    platform: numeric_state
+    entity_id: sensor.soverom_temperature_last
+    above: 15
+  action:
+    - service: notify.pushover
+      data:
+        title: "Sensor warning"
+        message: "Temperaturmåling på soverommet er {{ states.sensor.soverom_temperature_last.state | int }} minutter gammel"
 
-  - alias: Outside temperature sensor has old data
-    trigger:
-      platform: numeric_state
-      entity_id: sensor.ute_temperature
-      value_template: '{{ (as_timestamp(now()) - as_timestamp(state.last_updated)) / 60 }}'
-      above: 5
-    action:
-      - service: notify.pushover
-        data:
-          title: "Sensor warning"
-          message: "Temperaturmåling ute er {{ ((as_timestamp(now()) - as_timestamp(state.last_updated)) / 60) |int }} minutter gammel"
- 
-  - alias: IFTTT Event
-    trigger:
-      platform: event
-      event_type: ifttt_webhook_received
-      event_data:
-        action: call_service
-    action:
-      service_template: '{{ trigger.event.data.service }}'
-      data_template:
-        entity_id: '{{ trigger.event.data.entity_id }}'
+- alias: Outside temperature sensor has old data
+  trigger:
+    platform: numeric_state
+    entity_id: sensor.ute_temperature_last
+    above: 15
+  action:
+    - service: notify.pushover
+      data:
+        title: "Sensor warning"
+        message: "Temperaturmåling ute er {{ states.sensor.ute_temperature_last.state | int }} minutter gammel"
 
-  - alias: Workday heaters on
-    trigger:
-      - platform: time
-        at: '05:30:00'
-      - platform: time
-        at: '16:15:00'
-    condition:
-      condition: state
-      entity_id: binary_sensor.workday_sensor
-      state: 'on'
-    action:
-      - service: script.heaters_high
+- alias: IFTTT Event
+  trigger:
+    platform: event
+    event_type: ifttt_webhook_received
+    event_data:
+      action: call_service
+  action:
+    service_template: '{{ trigger.event.data.service }}'
+    data_template:
+      entity_id: '{{ trigger.event.data.entity_id }}'
 
-  - alias: Workday heaters off
-    trigger:
-      - platform: time
-        at: '08:20:00'
-      - platform: time
-        at: '23:30:00'
-    condition:
-      condition: state
-      entity_id: binary_sensor.workday_sensor
-      state: 'on'
-    action:
-      - service: script.heaters_low
+- alias: Workday heaters on
+  trigger:
+    - platform: time
+      at: '05:30:00'
+    - platform: time
+      at: '16:15:00'
+  condition:
+    condition: state
+    entity_id: binary_sensor.workday_sensor
+    state: 'on'
+  action:
+    - service: script.heaters_high
 
-  - alias: Weekend heaters on
-    trigger:
-      platform: time
-      at: '07:00:00'
-    condition:
-      condition: state
-      entity_id: binary_sensor.workday_sensor
-      state: 'off'
-    action:
-      - service: script.heaters_high
-
-  - alias: Weekend heaters off
-    trigger:
-      platform: time
+- alias: Workday heaters off
+  trigger:
+    - platform: time
+      at: '08:20:00'
+    - platform: time
       at: '23:30:00'
-    condition:
-      condition: state
-      entity_id: binary_sensor.workday_sensor
-      state: 'off'
-    action:
-      - service: script.heaters_low
+  condition:
+    condition: state
+    entity_id: binary_sensor.workday_sensor
+    state: 'on'
+  action:
+    - service: script.heaters_low
+
+- alias: Weekend heaters on
+  trigger:
+    platform: time
+    at: '07:00:00'
+  condition:
+    condition: state
+    entity_id: binary_sensor.workday_sensor
+    state: 'off'
+  action:
+    - service: script.heaters_high
+
+- alias: Weekend heaters off
+  trigger:
+    platform: time
+    at: '23:30:00'
+  condition:
+    condition: state
+    entity_id: binary_sensor.workday_sensor
+    state: 'off'
+  action:
+    - service: script.heaters_low
 
