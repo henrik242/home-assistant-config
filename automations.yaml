@@ -18,35 +18,38 @@
 - alias: Living room temperature sensor has old data
   trigger:
     platform: numeric_state
-    entity_id: sensor.stua_temperature_last
-    above: 15
+    entity_id: sensor.time
+    value_template: "{{ (now() - states.sensor.stua_temperature.last_updated).seconds / 60 }}"
+    above: 60
   action:
     - service: notify.pushover
       data:
         title: "Sensor warning"
-        message: "Temperaturmåling i stua er {{ states.sensor.stua_temperature_last.state | int }} minutter gammel"
+        message: "Temperaturmåler i stua sender ikke data"
 
 - alias: Bedroom temperature sensor has old data
   trigger:
     platform: numeric_state
-    entity_id: sensor.soverom_temperature_last
-    above: 15
+    entity_id: sensor.time
+    value_template: "{{ (now() - states.sensor.soverom_temperature.last_updated).seconds / 60 }}"
+    above: 60
   action:
     - service: notify.pushover
       data:
         title: "Sensor warning"
-        message: "Temperaturmåling på soverommet er {{ states.sensor.soverom_temperature_last.state | int }} minutter gammel"
+        message: "Temperaturmåler på soverommet sender ikke data"
 
 - alias: Outside temperature sensor has old data
   trigger:
     platform: numeric_state
-    entity_id: sensor.ute_temperature_last
-    above: 15
+    entity_id: sensor.time
+    value_template: "{{ (now() - states.sensor.ute_temperature.last_updated).seconds / 60 }}"
+    above: 60
   action:
     - service: notify.pushover
       data:
         title: "Sensor warning"
-        message: "Temperaturmåling ute er {{ states.sensor.ute_temperature_last.state | int }} minutter gammel"
+        message: "Temperaturmåler ute sender ikke data"
 
 - alias: IFTTT Event
   trigger:
