@@ -20,7 +20,7 @@
     platform: numeric_state
     entity_id: sensor.time
     value_template: "{{ (now() - states.sensor.stua_temperature.last_updated).seconds / 60 }}"
-    above: 60
+    above: 120
   action:
     - service: notify.pushover
       data:
@@ -32,7 +32,7 @@
     platform: numeric_state
     entity_id: sensor.time
     value_template: "{{ (now() - states.sensor.soverom_temperature.last_updated).seconds / 60 }}"
-    above: 60
+    above: 120
   action:
     - service: notify.pushover
       data:
@@ -44,7 +44,7 @@
     platform: numeric_state
     entity_id: sensor.time
     value_template: "{{ (now() - states.sensor.ute_temperature.last_updated).seconds / 60 }}"
-    above: 60
+    above: 120
   action:
     - service: notify.pushover
       data:
@@ -109,4 +109,20 @@
     state: 'off'
   action:
     - service: script.heaters_low
+
+- alias: Plantelys on
+  trigger:
+    platform: time
+    at: '07:00:00'
+  action:
+    - service: switch.turn_on
+      entity_id: switch.plantelys
+
+- alias: Plantelys off
+  trigger:
+    platform: time
+    at: '19:00:00'
+  action:
+    - service: switch.turn_off
+      entity_id: switch.plantelys
 
