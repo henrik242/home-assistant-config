@@ -23,7 +23,7 @@
         - Living room
     climate.outdoor_thermostat:
       name: Outdoor thermostat
-      room: Outside
+      room: Backyard
       aliases:
         - Outside thermostat
         - Outside temperature
@@ -34,9 +34,9 @@
     media_player.castro:
       expose: false
       name: Castro
-      room: Living Room
+      room: Living room
       aliases:
-        - Living Room Chromecast
+        - Living room Chromecast
         - Chromecast
     media_player.garage:
       expose: false
@@ -45,7 +45,7 @@
     media_player.yamaha_receiver:
       expose: false
       name: Yamaha receiver
-      room: Living Room
+      room: Living room
       aliases:
         - Yamaha receiver
         - forsterker
@@ -56,7 +56,7 @@
       expose: false
     switch.tv_all:
       name: Samsung TV
-      room: Living Room
+      room: Living room
       aliases:
         - Samsung TV
         - Telly
@@ -73,7 +73,7 @@
         - kitchen light
     switch.sofavegg:
       name: Sofa Corner light
-      room: Living Room
+      room: Living room
       aliases:
         - Sofa corner light
         - Sofa wall light
@@ -81,14 +81,14 @@
         - lys på sofavegg
     switch.spisebord:
       name: Dining table corner light
-      room: Living Room
+      room: Living room
       aliases:
         - Dining table corner light
         - Dining table wall light
         - Spisebord-hjørne
     switch.hjrne:
       name: TV Corner Light
-      room: Living Room
+      room: Living room
       aliases:
         - TV corner light
         - Corner light
@@ -103,6 +103,7 @@
         - Ganglys
     switch.sofatak:
       name: Sofa Ceiling light
+      room: Living room
       aliases:
         - Sofa ceiling light
         - Sofataklys
@@ -117,20 +118,20 @@
       room: Bathroom
       expose: false
     switch.katteluke:
-      room: Living Room
+      room: Living room
       expose: false
     sensor.stua_temperature:
-      name: Living Room temperature
-      room: Living Room
+      name: Living room temperature
+      room: Living room
       aliases:
-        - Living Room temperature
+        - Living room temperature
         - Stue-temperatur
-        - Living Room thermostat
+        - Living room thermostat
         - Inne-temperatur
         - Temperatur inne
     sensor.ute_temperature:
       name: Outside temperature
-      room: Outside
+      room: Backyard
       aliases:
         - Outside temperature
         - Ute-temperatur
@@ -148,7 +149,7 @@
       expose: false
     light.tak:
       name: Dining table ceiling light
-      room: Living Room
+      room: Living room
       aliases:
         - Dining table ceiling light
         - Tak-lys
@@ -164,4 +165,20 @@
       expose: false
     group.all_automations:
       expose: false
- 
+    group.all_speakahs:
+      expose: false
+    media_player.all_speakahs:
+      expose: false
+    media_player.spotify:
+      expose: false
+    media_player.samsung_tv_remote:
+      expose: false
+    group.regular_lights:
+      expose: false
+    input_boolean.fake_heater:
+      expose: false
+    group.hall_lights:
+      expose: false
+    group.kitchen_lights:
+      expose: false
+
