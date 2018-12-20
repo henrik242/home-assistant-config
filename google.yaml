@@ -109,10 +109,9 @@
         - Sofataklys
     switch.panelovn_stue:
       expose: false
-    switch.panelovn_stuevindu:
+    switch.panelovn_lab:
       expose: false
-    switch.varmtvannsbereder:
-      room: Kitchen
+    switch.panelovn_stuevindu:
       expose: false
     switch.vaskemaskin:
       room: Bathroom

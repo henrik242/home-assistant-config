@@ -45,3 +45,5 @@
     entities:
       - switch.panelovn_stue
       - switch.panelovn_stuevindu
+      - switch.panelovn_lab
+

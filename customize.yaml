@@ -14,13 +14,13 @@ sensor.vaskemaskin_power_3:
   unit_of_measurement: W
 sensor.vaskemaskin_power_4:
   unit_of_measurement: A
-sensor.varmtvannsbereder_power:
+sensor.panelovn_lab_power:
   unit_of_measurement: V
-sensor.varmtvannsbereder_power_2:
+sensor.panelovn_lab_power_2:
   unit_of_measurement: kWh
-sensor.varmtvannsbereder_power_3:
+sensor.panelovn_lab_power_3:
   unit_of_measurement: W
-sensor.varmtvannsbereder_power_4:
+sensor.panelovn_lab_power_4:
   unit_of_measurement: A
 sensor.panelovn_stue_power:
   unit_of_measurement: V
