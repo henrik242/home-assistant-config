@@ -112,7 +112,7 @@ climate:
     name: Indoor thermostat
     heater: group.livingroom_heaters
     target_sensor: sensor.stua_temperature
-    target_temp: 21.5
+    target_temp: 22.1
     away_temp: 15
     cold_tolerance: 0.3
     hot_tolerance: 0.1

@@ -3,7 +3,7 @@ heaters_high:
     - service: climate.set_temperature
       entity_id: climate.indoor_thermostat
       data:
-        temperature: 21.5
+        temperature: 22.1
 
 heaters_low:
   sequence:
