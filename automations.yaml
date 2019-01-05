@@ -51,6 +51,42 @@
         title: "Sensor warning"
         message: "Temperaturmåler ute sender ikke data"
 
+- alias: Living room temperature sensor does not send data
+  trigger:
+    platform: numeric_state
+    entity_id: sensor.time
+    value_template: "{{ (now() - states.sensor.stua_temperature.last_updated).seconds / 60 }}"
+    above: 1440
+  action:
+    - service: notify.pushover
+      data:
+        title: "Sensor ERROR"
+        message: "Temperaturmåler i stua sender ikke data"
+
+- alias: Bedroom temperature sensor does not send data
+  trigger:
+    platform: numeric_state
+    entity_id: sensor.time
+    value_template: "{{ (now() - states.sensor.soverom_temperature.last_updated).seconds / 60 }}"
+    above: 1440
+  action:
+    - service: notify.pushover
+      data:
+        title: "Sensor ERROR"
+        message: "Temperaturmåler på soverommet sender ikke data"
+
+- alias: Outside temperature sensor does not send data
+  trigger:
+    platform: numeric_state
+    entity_id: sensor.time
+    value_template: "{{ (now() - states.sensor.ute_temperature.last_updated).seconds / 60 }}"
+    above: 1440
+  action:
+    - service: notify.pushover
+      data:
+        title: "Sensor ERROR"
+        message: "Temperaturmåler ute sender ikke data"
+
 - alias: IFTTT Event
   trigger:
     platform: event
