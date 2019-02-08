@@ -19,7 +19,7 @@
   trigger:
     platform: numeric_state
     entity_id: sensor.time
-    value_template: "{{ (now() - states.sensor.stua_temperature.last_updated).seconds / 60 }}"
+    value_template: "{{ (now() - states.sensor.stua_temperature_2.last_updated).seconds / 60 }}"
     above: 120
   action:
     - service: notify.pushover
@@ -31,7 +31,7 @@
   trigger:
     platform: numeric_state
     entity_id: sensor.time
-    value_template: "{{ (now() - states.sensor.soverom_temperature.last_updated).seconds / 60 }}"
+    value_template: "{{ (now() - states.sensor.soverom_temperature_2.last_updated).seconds / 60 }}"
     above: 120
   action:
     - service: notify.pushover
@@ -43,7 +43,7 @@
   trigger:
     platform: numeric_state
     entity_id: sensor.time
-    value_template: "{{ (now() - states.sensor.ute_temperature.last_updated).seconds / 60 }}"
+    value_template: "{{ (now() - states.sensor.ute_temperature_2.last_updated).seconds / 60 }}"
     above: 120
   action:
     - service: notify.pushover
@@ -55,7 +55,7 @@
   trigger:
     platform: numeric_state
     entity_id: sensor.time
-    value_template: "{{ (now() - states.sensor.stua_temperature.last_updated).seconds / 60 }}"
+    value_template: "{{ (now() - states.sensor.stua_temperature_2.last_updated).seconds / 60 }}"
     above: 1440
   action:
     - service: notify.pushover
@@ -67,7 +67,7 @@
   trigger:
     platform: numeric_state
     entity_id: sensor.time
-    value_template: "{{ (now() - states.sensor.soverom_temperature.last_updated).seconds / 60 }}"
+    value_template: "{{ (now() - states.sensor.soverom_temperature_2.last_updated).seconds / 60 }}"
     above: 1440
   action:
     - service: notify.pushover
@@ -79,7 +79,7 @@
   trigger:
     platform: numeric_state
     entity_id: sensor.time
-    value_template: "{{ (now() - states.sensor.ute_temperature.last_updated).seconds / 60 }}"
+    value_template: "{{ (now() - states.sensor.ute_temperature_2.last_updated).seconds / 60 }}"
     above: 1440
   action:
     - service: notify.pushover

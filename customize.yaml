@@ -6,13 +6,13 @@ input_boolean.fake_heater:
   hidden: true
 media_player.forsterker_zone_2:
   hidden: true
-sensor.vaskemaskin_power:
-  unit_of_measurement: V
 sensor.vaskemaskin_power_2:
-  unit_of_measurement: kWh
+  unit_of_measurement: V
 sensor.vaskemaskin_power_3:
-  unit_of_measurement: W
+  unit_of_measurement: kWh
 sensor.vaskemaskin_power_4:
+  unit_of_measurement: W
+sensor.vaskemaskin_power_5:
   unit_of_measurement: A
 sensor.panelovn_lab_power:
   unit_of_measurement: V
@@ -38,11 +38,11 @@ sensor.panelovn_stuevindu_power_3:
   unit_of_measurement: W
 sensor.panelovn_stuevindu_power_4:
   unit_of_measurement: A
-sensor.katteluke_power:
+sensor.lab_power:
   unit_of_measurement: V
-sensor.katteluke_power_2:
+sensor.lab_power_2:
   unit_of_measurement: kWh
-sensor.katteluke_power_3:
+sensor.lab_power_3:
   unit_of_measurement: W
-sensor.katteluke_power_4:
+sensor.lab_power_4:
   unit_of_measurement: A
