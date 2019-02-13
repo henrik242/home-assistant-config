@@ -111,7 +111,7 @@ climate:
   - platform: generic_thermostat
     name: Indoor thermostat
     heater: group.livingroom_heaters
-    target_sensor: sensor.stua_temperature
+    target_sensor: sensor.stua_temperature_2
     target_temp: 22.1
     away_temp: 15
     cold_tolerance: 0.3
@@ -121,14 +121,14 @@ climate:
   - platform: generic_thermostat
     name: Outdoor thermostat
     heater: input_boolean.fake_heater
-    target_sensor: sensor.ute_temperature
+    target_sensor: sensor.ute_temperature_2
     initial_operation_mode: "off"
     target_temp: -50
 
   - platform: generic_thermostat
     name: Bedroom thermostat
     heater: input_boolean.fake_heater
-    target_sensor: sensor.soverom_temperature
+    target_sensor: sensor.soverom_temperature_2
     initial_operation_mode: "off"
     target_temp: -50
 

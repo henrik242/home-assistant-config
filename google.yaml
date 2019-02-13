@@ -119,7 +119,7 @@
     switch.katteluke:
       room: Living room
       expose: false
-    sensor.stua_temperature:
+    sensor.stua_temperature_2:
       name: Living room temperature
       room: Living room
       aliases:
@@ -128,14 +128,14 @@
         - Living room thermostat
         - Inne-temperatur
         - Temperatur inne
-    sensor.ute_temperature:
+    sensor.ute_temperature_2:
       name: Outside temperature
       room: Backyard
       aliases:
         - Outside temperature
         - Ute-temperatur
         - Temperatur ute
-    sensor.soverom_humidity:
+    sensor.soverom_temperature_2:
       name: Bedroom temperature
       room: Bedroom
       aliases:
