@@ -52,18 +52,6 @@
         - receiver
     media_player.forsterker_zone_2:
       expose: false
-    media_player.samsungtv:
-      expose: false
-    switch.tv_all:
-      name: Samsung TV
-      room: Living room
-      aliases:
-        - Samsung TV
-        - Telly
-        - Television
-        - TV
-    switch.telly:
-      expose: false
     switch.kjkken:
       name: Kitchen Table Light
       room: Kitchen

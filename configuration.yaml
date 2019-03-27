@@ -13,6 +13,15 @@ homeassistant:
   # Customization file
   customize: !include customize.yaml
 
+  auth_providers:
+    - type: trusted_networks
+      trusted_networks:
+      - 127.0.0.1
+      - 192.168.86.0/24
+      - fd00::/8
+    - type: legacy_api_password
+      api_password: !secret http_password
+      
 # Show links to resources in log and frontend
 introduction:
 
@@ -24,17 +33,12 @@ config:
 
 http:
   server_port: !secret http_server_port
-  # Secrets are defined in the file secrets.yaml
-  api_password: !secret http_password
   # Uncomment this if you are using SSL/TLS, running in Docker container, etc.
   base_url: !secret base_url
   ssl_certificate: !secret ssl_certificate
   ssl_key: !secret ssl_key
   ip_ban_enabled: true
   login_attempts_threshold: 10
-  trusted_networks:
-    - 127.0.0.1
-    - 192.168.86.0/24
   ssl_profile: intermediate
 
 # Checks for available updates
@@ -100,7 +104,8 @@ media_player:
     client_secret: !secret spotify_client_secret
 
   - platform: samsungtv
-    host: 192.168.86.21
+    host: 192.168.86.23
+    port: 8001
 
 input_boolean:
   fake_heater:
@@ -112,7 +117,7 @@ climate:
     name: Indoor thermostat
     heater: group.livingroom_heaters
     target_sensor: sensor.stua_temperature_2
-    target_temp: 22.1
+    target_temp: 21.4
     away_temp: 15
     cold_tolerance: 0.3
     hot_tolerance: 0.1

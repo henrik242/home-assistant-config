@@ -32,7 +32,6 @@
       - group.livingroom_lights
       - group.kitchen_lights
       - group.hall_lights
-      - switch.telly
 
   ceiling_lights:
     name: Ceiling lights

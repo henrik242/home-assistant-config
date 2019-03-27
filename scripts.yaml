@@ -3,7 +3,7 @@ heaters_high:
     - service: climate.set_temperature
       entity_id: climate.indoor_thermostat
       data:
-        temperature: 22.1
+        temperature: 21.4
 
 heaters_low:
   sequence:
@@ -22,7 +22,7 @@ morning:
 leaving:
   sequence:
     - service: homeassistant.turn_off
-      entity_id: switch.telly, group.livingroom_lights, group.kitchen_lights, switch.heaters
+      entity_id: group.livingroom_lights, group.kitchen_lights, switch.heaters
     - delay: 
         minutes: 2
     - service: homeassistant.turn_off
@@ -34,31 +34,7 @@ tv_on:
       entity_id: switch.telly
     - service: script.default_volume
     - delay:
-        seconds: 20
-    - service: media_player.select_source
-      entity_id: media_player.yamaha_receiver
-      data:
-        source: HDMI1
-    - delay:
-        seconds: 5
-    - service: media_player.select_source
-      entity_id: media_player.yamaha_receiver
-      data:
-        source: HDMI1
-    - delay:
-        seconds: 5
-    - service: media_player.select_source
-      entity_id: media_player.yamaha_receiver
-      data:
-        source: HDMI1
-    - delay:
-        seconds: 5
-    - service: media_player.select_source
-      entity_id: media_player.yamaha_receiver
-      data:
-        source: HDMI1
-    - delay:
-        seconds: 5
+        seconds: 2
     - service: media_player.select_source
       entity_id: media_player.yamaha_receiver
       data:
