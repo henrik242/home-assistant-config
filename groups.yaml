@@ -1,30 +1,30 @@
   regular_lights:
     name: Regular lights
     entities:
-      - switch.gang
-      - switch.hjrne
-      - switch.sofavegg
-      - switch.spisebord
-      - light.tak
+      - switch.gang_2
+      - switch.hjorne
+      - switch.sofavegg_2
+      - switch.spisebord_2
+      - light.tak_2
   
   livingroom_lights:
     name: Living room lights
     entities:
-      - switch.hjrne
-      - switch.sofavegg
-      - switch.spisebord
-      - light.tak
-      - switch.sofatak
+      - switch.hjorne
+      - switch.sofavegg_2
+      - switch.spisebord_2
+      - light.tak_2
+      - switch.sofatak_2
   
   kitchen_lights:
     name: Kitchen lights
     entities:
-      - switch.kjkken
+      - switch.kjokken
 
   hall_lights:
     name: Hall lights
     entities:
-      - switch.gang
+      - switch.gang_2
 
   all_stuff:
     name: All stuff
@@ -36,13 +36,13 @@
   ceiling_lights:
     name: Ceiling lights
     entities:
-      - switch.sofatak
-      - light.tak
+      - switch.sofatak_2
+      - light.tak_2
 
   livingroom_heaters:
     name: Living Room heaters
     entities:
-      - switch.panelovn_stue
-      - switch.panelovn_stuevindu
-      - switch.panelovn_lab
+      - switch.panelovn_stue_2
+      - switch.panelovn_stuevindu_2
+      - switch.panelovn_lab_2
 

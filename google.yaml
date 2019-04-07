@@ -52,14 +52,14 @@
         - receiver
     media_player.forsterker_zone_2:
       expose: false
-    switch.kjkken:
+    switch.kjokken:
       name: Kitchen Table Light
       room: Kitchen
       aliases:
         - Kitchen table light
         - kjøkkenlys
         - kitchen light
-    switch.sofavegg:
+    switch.sofavegg_2:
       name: Sofa Corner light
       room: Living room
       aliases:
@@ -67,14 +67,14 @@
         - Sofa wall light
         - sofavegglys
         - lys på sofavegg
-    switch.spisebord:
+    switch.spisebord_2:
       name: Dining table corner light
       room: Living room
       aliases:
         - Dining table corner light
         - Dining table wall light
         - Spisebord-hjørne
-    switch.hjrne:
+    switch.hjorne:
       name: TV Corner Light
       room: Living room
       aliases:
@@ -83,7 +83,7 @@
         - TV wall light
         - Hjørnelys
         - TV-hjørne-lys
-    switch.gang:
+    switch.gang_2:
       name: Hall
       room: Hall
       aliases:
@@ -95,11 +95,11 @@
       aliases:
         - Sofa ceiling light
         - Sofataklys
-    switch.panelovn_stue:
+    switch.panelovn_stue_2:
       expose: false
-    switch.panelovn_lab:
+    switch.panelovn_lab_2:
       expose: false
-    switch.panelovn_stuevindu:
+    switch.panelovn_stuevindu_2:
       expose: false
     switch.vaskemaskin:
       room: Bathroom
@@ -134,7 +134,7 @@
       expose: false
     light.nestenalle:
       expose: false
-    light.tak:
+    light.tak_2:
       name: Dining table ceiling light
       room: Living room
       aliases:
